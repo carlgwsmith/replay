@@ -23,7 +23,7 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
 
     return(
         <div className="flex justify-between items-center w-full bg-black border-b-1 py-8 px-10 border-jet h-12 text-snow">
-                <div className={logoEffect}>Replay Lounge</div>
+                <div className="fade-in"><img src="logo.png" style={{'width':'200px'}}/></div>
                 <ul className="hidden md:flex text-[16px] ease-in-out duration-500">
                     <li className={linkStyle}> 
                         <NavLink to={`/`}>
