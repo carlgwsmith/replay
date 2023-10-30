@@ -7,6 +7,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import CreateEvent from './Pages/CreateEvent'
+import Event from './Pages/Event';
+import Calendar from './Pages/Calendar';
 const routes = [
   {path:'/*',
 element:<Home/>},
@@ -24,6 +27,19 @@ element:<Home/>},
         path:'/home',
         element: <Home/>
       },
+      {
+        path:'/createEvent',
+        element: <CreateEvent/>
+      }
+      ,
+      {
+        path:'/event/:id',
+        element: <Event/>
+      },
+      {
+        path:'/calendar',
+        element: <Calendar/>
+      }
     ]
   },
 ]
