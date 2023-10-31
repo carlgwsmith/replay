@@ -17,7 +17,6 @@ export default function Calendar (){
         }
         if(data){
             setEvents(data)
-            console.log(data)
             setError(null)
         }
     }
