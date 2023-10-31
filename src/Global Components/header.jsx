@@ -1,6 +1,6 @@
 import {HiMenu} from 'react-icons/hi'
 import {MdClose} from 'react-icons/md'
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import {useState, useEffect} from 'react'
 
 function Header(){
@@ -23,11 +23,31 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
 
     return(
         <div className="flex justify-between items-center w-full bg-[#0F1415] border-b-1 py-8 px-10 border-jet h-12 text-snow">
-                <div className="fade-in"><img src="logo.png" style={{'width':'200px'}}/></div>
+                <div className="fade-in"><Link to={'/'}><img src="logo.png" style={{'width':'200px'}}/></Link></div>
                 <ul className="hidden md:flex text-[16px] ease-in-out duration-500">
                     <li className={linkStyle}> 
                         <NavLink to={`/`}>
                             Home
+                        </NavLink>
+                    </li>
+                    <li className={linkStyle}> 
+                        <NavLink to={`/calendar`}>
+                            Calendar
+                        </NavLink>
+                    </li>
+                    <li className={linkStyle}> 
+                        <NavLink to={`/`}>
+                            About
+                        </NavLink>
+                    </li>
+                    <li className={linkStyle}> 
+                        <NavLink to={`/`}>
+                            Contact
+                        </NavLink>
+                    </li>
+                    <li className={linkStyle}> 
+                        <NavLink to={`/`}>
+                            Store
                         </NavLink>
                     </li>
                 </ul>
@@ -46,6 +66,18 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                     <ul className="uppercase">
                         <li className="p-4">
                         <NavLink to={`/home`}>Home</NavLink>
+                        </li>
+                        <li className="p-4">
+                        <NavLink to={`/calendar`}>Calendar</NavLink>
+                        </li>
+                        <li className="p-4">
+                        <NavLink to={`/home`}>About</NavLink>
+                        </li>
+                        <li className="p-4">
+                        <NavLink to={`/home`}>Contact</NavLink>
+                        </li>
+                        <li className="p-4">
+                        <NavLink to={`/home`}>Store</NavLink>
                         </li>
                 </ul>
                 </div>
