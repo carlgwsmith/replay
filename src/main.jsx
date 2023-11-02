@@ -10,6 +10,8 @@ import {
 import CreateEvent from './Pages/CreateEvent'
 import Event from './Pages/Event';
 import Calendar from './Pages/Calendar';
+import EditEvent from './Pages/EditEvent';
+import EventList from './Pages/EventList';
 const routes = [
   {path:'/*',
 element:<Home/>},
@@ -35,6 +37,14 @@ element:<Home/>},
       {
         path:'/event/:id',
         element: <Event/>
+      },
+      {
+        path:'/event/edit/:id',
+        element: <EditEvent/>
+      },
+      {
+        path:'/eventlist',
+        element: <EventList/>
       },
       {
         path:'/calendar',

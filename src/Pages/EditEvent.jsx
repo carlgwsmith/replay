@@ -1,41 +1,54 @@
-import { useState } from "react"
-import supabase from "../Config/supabaseClient";
+import { useNavigate, useParams } from "react-router-dom"
+import supabase from "../Config/supabaseClient"
+import { useEffect, useState } from "react"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function CreateEvent(){
+
+export default function EditEvent(){
+
+    const {id} = useParams()
+    const navigate = useNavigate()
     const [event_name, seteventName] = useState('');
     const [event_description, seteventDescription] = useState('');
     const [event_image, seteventImage] = useState('');
     const [event_cost, seteventCost] = useState('');
     const [event_start_time, seteventStartTime] = useState('');
-    const [event_date, seteventDate] = useState( new Date());
-    const [formError, setformError] = useState('');
+    const [event_date, seteventDate] = useState(new Date());
+    const [date, setDate] = useState('')
 
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
-        if(!event_name || !event_description || !event_image || !event_cost || !event_start_time){
-            setformError('Complete all form fields')
-            return
-        }
-        const {data, error} = await supabase
-        .from('events')
-        .insert([{event_name, event_cost, event_description, event_start_time, event_image, event_date}])
-        .select()
+    useEffect(() => {
+        const fetchEvent = async ()=>{
+            const {data, error} = await supabase
+            .from('events')
+            .select()
+            .eq('id', id)
+            .single()
 
-        if(error){
-            console.log(error)
-            setformError('Complete all form fields')
+            if(error){
+                navigate('/eventlist', {replace: true})
+            }
+            if(data){
+                seteventCost(data.event_cost)
+                seteventDescription(data.event_description)
+                seteventName(data.event_name)
+                seteventImage(data.event_image)
+                seteventStartTime(data.event_start_time)
+                setDate(data.event_date)
+
+                console.log(typeof data.event_date)
+            }
         }
-        if(data){
-            console.log(data)
-            setformError(null)
-        }
+        fetchEvent()
+    }, [id, navigate ]);
+
+    const handleSubmit = () =>{
+        console.log('uh')
     }
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
-            <h2 className="font-bold text-xl">Create event</h2>
+            <h2 className="font-bold text-xl">Edit {event_name} on {date}</h2>
         </div>
     </div>
     <form onSubmit={handleSubmit}>
@@ -56,17 +69,17 @@ export default function CreateEvent(){
                 <label htmlFor="cost" className="block">Event Cost</label>
                 <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="cost" value={event_cost} onChange={(e)=> seteventCost(e.target.value)} />
             </div>
-            {/* <div className="col-span-4 col-start-2">
+            <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Date</label>
                 <DatePicker selected={event_date} onChange={(date) => seteventDate(date)} />
-            </div> */}
+            </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Start Time</label>
                 <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="starttime" value={event_start_time} onChange={(e)=> seteventStartTime(e.target.value)} />
             </div>
             <div className="col-span-4 col-start-2">
-            <button className="border-2 p-2 rounded-sm text-slate-800 bg-gray-300 border-gray-300 cursor-pointer">Submit Event</button>
-            {formError && <p className="error text-red-500">{formError}</p>}
+            <button className="border-2 p-2 rounded-sm text-slate-800 bg-gray-300 border-gray-300 cursor-pointer">Update Event</button>
+            {/* {formError && <p className="error text-red-500">{formError}</p>} */}
             </div>
     </div>
         </form>
