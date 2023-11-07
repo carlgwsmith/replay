@@ -1,5 +1,6 @@
 import { useState } from "react"
 import supabase from "../Config/supabaseClient";
+import {useNavigate} from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,6 +12,7 @@ export default function CreateEvent(){
     const [event_start_time, seteventStartTime] = useState('');
     const [event_date, seteventDate] = useState( new Date());
     const [formError, setformError] = useState('');
+    const navigate = useNavigate()
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -30,6 +32,7 @@ export default function CreateEvent(){
         if(data){
             console.log(data)
             setformError(null)
+            navigate('/eventlist')
         }
     }
     return(<>
@@ -56,13 +59,13 @@ export default function CreateEvent(){
                 <label htmlFor="cost" className="block">Event Cost</label>
                 <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="cost" value={event_cost} onChange={(e)=> seteventCost(e.target.value)} />
             </div>
-            {/* <div className="col-span-4 col-start-2">
+            <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Date</label>
                 <DatePicker selected={event_date} onChange={(date) => seteventDate(date)} />
-            </div> */}
+            </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Start Time</label>
-                <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="starttime" value={event_start_time} onChange={(e)=> seteventStartTime(e.target.value)} />
+                <input type="time" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="starttime" value={event_start_time} onChange={(e)=> seteventStartTime(e.target.value)} />
             </div>
             <div className="col-span-4 col-start-2">
             <button className="border-2 p-2 rounded-sm text-slate-800 bg-gray-300 border-gray-300 cursor-pointer">Submit Event</button>

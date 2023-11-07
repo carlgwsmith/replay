@@ -1,7 +1,6 @@
 import supabase from "../Config/supabaseClient"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import {CiEdit} from 'react-icons/ci'
+import EventListCard from "../EventComponents/EventListCard"
 
 export default function EventList (){
  const [error, setError] = useState(null)
@@ -28,16 +27,19 @@ export default function EventList (){
  }, []);
 
 
+ const handleDelete = (id)=>{
+    setEvents(prevEvents =>{
+        return prevEvents.filter(event=> event.id !== id)
+    })
+ }
+
+
     return(<>
     <div>
         {error && (<p>{error}</p>)}
         {events && (<div className="events">
             {events.map(event => (
-                <div key={event.id}>
-                    <p>{event.event_name} <Link to={'/event/edit/' + event.id }>
-                    <span><CiEdit/></span>
-                    </Link></p>
-                </div>
+                <EventListCard key={event.id} event={event} onDelete={handleDelete}/>
             ))}
         </div>)}
     </div>
