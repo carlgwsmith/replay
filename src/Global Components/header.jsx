@@ -36,12 +36,12 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                         </NavLink>
                     </li>
                     <li className={linkStyle}> 
-                        <NavLink to={`/`}>
+                        <NavLink to={`/about`}>
                             About
                         </NavLink>
                     </li>
                     <li className={linkStyle}> 
-                        <NavLink to={`/`}>
+                        <NavLink to={`/contact`}>
                             Contact
                         </NavLink>
                     </li>
@@ -71,10 +71,10 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                         <NavLink to={`/calendar`}>Calendar</NavLink>
                         </li>
                         <li className="p-4">
-                        <NavLink to={`/home`}>About</NavLink>
+                        <NavLink to={`/about`}>About</NavLink>
                         </li>
                         <li className="p-4">
-                        <NavLink to={`/home`}>Contact</NavLink>
+                        <NavLink to={`/contact`}>Contact</NavLink>
                         </li>
                         <li className="p-4">
                         <NavLink to={`/home`}>Store</NavLink>

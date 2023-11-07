@@ -12,6 +12,8 @@ import Event from './Pages/Event';
 import Calendar from './Pages/Calendar';
 import EditEvent from './Pages/EditEvent';
 import EventList from './Pages/EventList';
+import About from './Pages/About';
+import Contact from './Pages/Contact';
 const routes = [
   {path:'/*',
 element:<Home/>},
@@ -49,6 +51,14 @@ element:<Home/>},
       {
         path:'/calendar',
         element: <Calendar/>
+      },
+      {
+        path:'/about',
+        element: <About/>
+      },
+      {
+        path:'/contact',
+        element: <Contact/>
       }
     ]
   },

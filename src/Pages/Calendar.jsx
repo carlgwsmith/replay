@@ -3,12 +3,19 @@ import { useEffect, useState } from "react"
 export default function Calendar (){
  const [error, setError] = useState(null)
  const [events, setEvents] = useState(null)
+ const [orderBy, setOrderBy] = useState('event_date')
+
+ const d = new Date();
+ let month = d.getMonth() + 1;
+ const [currentMonth, setCurrentMonth] = useState(month)
+
 
  useEffect(() => {
     const fetchEvents = async () =>{
         const {data, error} = await supabase
         .from('events')
         .select()
+        .order(orderBy, {ascending: true})
 
         if(error){
             setError('could not reach database')
@@ -22,7 +29,7 @@ export default function Calendar (){
     }
 
     fetchEvents()
- }, []);
+ }, [orderBy]);
 
 
     return(<>
@@ -30,7 +37,8 @@ export default function Calendar (){
         {error && (<p>{error}</p>)}
         {events && (<div className="events">
             {events.map(event => (
-                <p key={event.id}>{event.event_name}</p>
+            <p key={event.id}>{event.event_name} {event.event_date}</p>
+
             ))}
         </div>)}
     </div>
