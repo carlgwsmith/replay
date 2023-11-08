@@ -37,13 +37,13 @@ export default function CreateEvent(){
         }
     }
 
-    const getUser = async()=>{
-        const { data: { user } } = await supabase.auth.getUser()
-console.log(user)
-    }
-    useEffect(() => {
-        getUser()
-    }, []);
+//     const getUser = async()=>{
+//         const { data: { user } } = await supabase.auth.getUser()
+// console.log(user)
+//     }
+//     useEffect(() => {
+//         getUser()
+//     }, []);
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
