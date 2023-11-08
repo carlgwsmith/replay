@@ -3,8 +3,6 @@ import supabase from "../Config/supabaseClient"
 import { useEffect, useState } from "react"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import 'react-time-picker/dist/TimePicker.css';
-import TimePicker from 'react-time-picker';
 
 
 export default function EditEvent(){

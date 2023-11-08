@@ -1,5 +1,8 @@
 import supabase from "../Config/supabaseClient"
 import { useEffect, useState } from "react"
+import {BiLeftArrowAlt, BiRightArrowAlt} from 'react-icons/bi'
+
+
 export default function Calendar (){
  const [error, setError] = useState(null)
  const [events, setEvents] = useState(null)
@@ -59,12 +62,12 @@ const incrementMonth = ()=>{
     <div>
         <div className="grid grid-cols-12 my-6 mx-10">
             <div className="col-span-4">
-            <button onClick={decrementMonth}>Previous Month</button>
+            <button onClick={decrementMonth}><BiLeftArrowAlt size="22px" className="inline p-l-1"/>Previous Month</button>
             </div>
             <div className="col-span-4 text-center">
                 <h1 className="text-[32px]">{monthNames[currentMonth -1]} {currentYear}</h1></div>
             <div className="col-span-4 text-right">
-            <button onClick={incrementMonth}>Next Month</button>
+            <button onClick={incrementMonth}>Next Month <BiRightArrowAlt className="inline" size="22px"/></button>
             </div>
         </div>
         {error && (<p>{error}</p>)}
