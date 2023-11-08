@@ -18,6 +18,7 @@ export default function Calendar (){
   "July", "August", "September", "October", "November", "December"
 ];
 
+
 const incrementMonth = ()=>{
     if(currentMonth == 12){
         setCurrentMonth(1)
@@ -72,17 +73,30 @@ const incrementMonth = ()=>{
         </div>
         {error && (<p>{error}</p>)}
         {events && (<div className="events grid grid-cols-4 gap-4 px-20 pb-20 pt-4">
-            {/* {events.map(event => (
-            <p key={event.id}>{event.event_name} {event.event_date}</p>
-            ))} */}
             {events.map((event) => {
+                var d = event.event_date;
                 var supabaseDate = new Date(event.event_date)
                 var eventDate = new Date( supabaseDate.getTime() + Math.abs(supabaseDate.getTimezoneOffset()*60000) )
                 var eventMonth = eventDate.getMonth() + 1;
                 var eventYear = eventDate.getFullYear();
-                console.log(eventYear)
+                var eventDay = d.slice(-2)
+                var time = event.event_start_time;
+                const convertedTime = new Date('1970-01-01T' + time +  'Z').toLocaleTimeString('en-US', {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});
+
                 if (eventMonth  == currentMonth && eventYear == currentYear){
-                    return <div className="h-[200px] rounded border-2 border-white" key={event.id}>{event.event_name} {event.event_date}</div>
+                    return <div className="h-[200px] bg-[#0F1415]" key={event.id}>
+                        <div className="grid grid-cols-12">
+                        <div className="bg-[#B2FFDF] text-jet col-span-6 text-center font-bold font-[18px] mx-4 p-4">
+                            {eventMonth} / {eventDay}
+                        </div>
+                        </div>
+                        <div className="grid grid-cols-6">
+                            <div className="col-span-6 p-4">
+                               <p className="text-[16px] font-bold uppercase">{event.event_name}</p>
+                               <p className="text-[12px]">{convertedTime} / ${event.event_cost}</p>
+                            </div>
+                        </div>
+                    </div>
                 }
                 return null
             })}
