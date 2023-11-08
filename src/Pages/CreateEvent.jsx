@@ -3,6 +3,7 @@ import supabase from "../Config/supabaseClient";
 import {useNavigate} from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useEffect } from "react";
 
 export default function CreateEvent(){
     const [event_name, seteventName] = useState('');
@@ -35,6 +36,14 @@ export default function CreateEvent(){
             navigate('/eventlist')
         }
     }
+
+    const getUser = async()=>{
+        const { data: { user } } = await supabase.auth.getUser()
+console.log(user)
+    }
+    useEffect(() => {
+        getUser()
+    }, []);
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
