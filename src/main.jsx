@@ -14,6 +14,7 @@ import EditEvent from './Pages/EditEvent';
 import EventList from './Pages/EventList';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Login from './Pages/Login';
 const routes = [
   {path:'/*',
 element:<Home/>},
@@ -59,6 +60,11 @@ element:<Home/>},
       {
         path:'/contact',
         element: <Contact/>
+      }
+      ,
+      {
+        path:'/login',
+        element: <Login/>
       }
     ]
   },

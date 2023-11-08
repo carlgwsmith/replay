@@ -65,13 +65,13 @@ const incrementMonth = ()=>{
             <button onClick={decrementMonth}><BiLeftArrowAlt size="22px" className="inline p-l-1"/>Previous Month</button>
             </div>
             <div className="col-span-4 text-center">
-                <h1 className="text-[32px]">{monthNames[currentMonth -1]} {currentYear}</h1></div>
+                <h1 className="text-[42px] mb-4 font-bold">{monthNames[currentMonth -1]} {currentYear}</h1></div>
             <div className="col-span-4 text-right">
             <button onClick={incrementMonth}>Next Month <BiRightArrowAlt className="inline" size="22px"/></button>
             </div>
         </div>
         {error && (<p>{error}</p>)}
-        {events && (<div className="events grid grid-cols-7 gap-4 px-20 py-20">
+        {events && (<div className="events grid grid-cols-4 gap-4 px-20 py-20">
             {/* {events.map(event => (
             <p key={event.id}>{event.event_name} {event.event_date}</p>
             ))} */}

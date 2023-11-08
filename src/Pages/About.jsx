@@ -2,7 +2,7 @@ export default function About(){
     return(<>
     <div className="grid grid-cols-12 p-10">
     <div className="col-span-12">
-			<h2 className="text-[36px] mb-4">FAQ</h2>
+			<h2 className="text-[42px] mb-4 font-bold">FAQ</h2>
 <p><strong>WHEN IS REPLAY LOUNGE OPEN FOR BUSINESS?</strong></p>
 <p>Replay Lounge is open 5PM-2AM every day.</p>
 <br/>
