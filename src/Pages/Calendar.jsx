@@ -71,7 +71,7 @@ const incrementMonth = ()=>{
             </div>
         </div>
         {error && (<p>{error}</p>)}
-        {events && (<div className="events grid grid-cols-4 gap-4 px-20 py-20">
+        {events && (<div className="events grid grid-cols-4 gap-4 px-20 pb-20 pt-4">
             {/* {events.map(event => (
             <p key={event.id}>{event.event_name} {event.event_date}</p>
             ))} */}
