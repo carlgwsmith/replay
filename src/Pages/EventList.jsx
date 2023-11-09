@@ -45,6 +45,7 @@ const incrementMonth = ()=>{
         const {data, error} = await supabase
         .from('events')
         .select()
+        .order(orderBy, {ascending: true})
 
         if(error){
             setError('could not reach database')
@@ -70,9 +71,7 @@ const incrementMonth = ()=>{
 
     return(<>
     <div>
-        {error && (<p>{error}</p>)}
-        {events && (<div className="events">
-            <div className="grid grid-cols-12 px-4 py-[60px]">
+    <div className="grid grid-cols-12 px-4 py-[60px]">
                 <div className="col-span-2">
                    <Link to="/createEvent" className="border-1 bg-slate-400 p-4 rounded-sm text-gray-900"><GrFormAdd className="inline"/>Create New Event</Link>
                 </div>
@@ -87,9 +86,31 @@ const incrementMonth = ()=>{
             <button onClick={incrementMonth}>Next Month <BiRightArrowAlt className="inline" size="22px"/></button>
             </div>
         </div>
-            {events.map(event => (
-                <EventListCard key={event.id} event={event} onDelete={handleDelete}/>
-            ))}
+        {error && (<p>{error}</p>)}
+        {/* {events && (
+            {events.map((event) => {
+                if (eventMonth  == currentMonth && eventYear == currentYear){
+               return <EventListCard key={event.id} event={event} onDelete={handleDelete}/>
+                }
+                return null;
+            })}
+        )} */}
+        {events && (<div className="events">
+            {events.map((event) => {
+                var d = event.event_date;
+                var supabaseDate = new Date(event.event_date)
+                var eventDate = new Date( supabaseDate.getTime() + Math.abs(supabaseDate.getTimezoneOffset()*60000) )
+                var eventMonth = eventDate.getMonth() + 1;
+                var eventYear = eventDate.getFullYear();
+                var eventDay = d.slice(-2)
+                var time = event.event_start_time;
+                const convertedTime = new Date('1970-01-01T' + time +  'Z').toLocaleTimeString('en-US', {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});
+
+                if (eventMonth  == currentMonth && eventYear == currentYear){
+                    return <EventListCard key={event.id} event={event} onDelete={handleDelete}/>
+                }
+                return null
+            })}
         </div>)}
     </div>
     </>)
