@@ -31,13 +31,13 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                         </NavLink>
                     </li>
                     <li className={linkStyle}> 
-                        <NavLink to={`/calendar`}>
-                            Calendar
+                        <NavLink to={`/about`}>
+                            About
                         </NavLink>
                     </li>
                     <li className={linkStyle}> 
-                        <NavLink to={`/about`}>
-                            About
+                        <NavLink to={`/calendar`}>
+                            Calendar
                         </NavLink>
                     </li>
                     <li className={linkStyle}> 
@@ -45,11 +45,11 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                             Contact
                         </NavLink>
                     </li>
-                    <li className={linkStyle}> 
+                    {/* <li className={linkStyle}> 
                         <NavLink to={`/`}>
                             Store
                         </NavLink>
-                    </li>
+                    </li> */}
                 </ul>
                 <div onClick={handleNav} className='block md:hidden'>
                     <HiMenu size={20} navbarOpen={true}/>
@@ -68,17 +68,17 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                         <NavLink to={`/home`}>Home</NavLink>
                         </li>
                         <li className="p-4">
-                        <NavLink to={`/calendar`}>Calendar</NavLink>
+                        <NavLink to={`/about`}>About</NavLink>
                         </li>
                         <li className="p-4">
-                        <NavLink to={`/about`}>About</NavLink>
+                        <NavLink to={`/calendar`}>Calendar</NavLink>
                         </li>
                         <li className="p-4">
                         <NavLink to={`/contact`}>Contact</NavLink>
                         </li>
-                        <li className="p-4">
+                        {/* <li className="p-4">
                         <NavLink to={`/home`}>Store</NavLink>
-                        </li>
+                        </li> */}
                 </ul>
                 </div>
         </div>

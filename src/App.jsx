@@ -5,6 +5,7 @@ import Footer from './Global Components/footer'
 import ApiCalendar from 'react-google-calendar-api'
 import { useEffect } from 'react'
 import axios from 'axios'
+import AdminHeader from './Global Components/adminHeader'
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <>
+    <AdminHeader/>
     <Header/>
       <Home/>
       <Footer/>

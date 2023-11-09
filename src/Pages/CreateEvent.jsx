@@ -36,14 +36,6 @@ export default function CreateEvent(){
             navigate('/eventlist')
         }
     }
-
-//     const getUser = async()=>{
-//         const { data: { user } } = await supabase.auth.getUser()
-// console.log(user)
-//     }
-//     useEffect(() => {
-//         getUser()
-//     }, []);
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
@@ -66,7 +58,7 @@ export default function CreateEvent(){
             </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="cost" className="block">Event Cost</label>
-                <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="cost" value={event_cost} onChange={(e)=> seteventCost(e.target.value)} />
+                <input type="text" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="cost" placeholder="just value, no dollar sign" value={event_cost} onChange={(e)=> seteventCost(e.target.value)} />
             </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Date</label>

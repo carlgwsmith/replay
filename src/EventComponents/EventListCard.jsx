@@ -27,18 +27,21 @@ export default function EventListCard ({ event, onDelete }){
 
 
     return(<>
-    <div className="m-4">
-        <div className="grid grid-cols-8 p-4 border-2 mb-2 rounded-sm">
-            <div className="col-span-4"><p>{event.event_name}</p></div>
-            <div className="col-start-7 col-span-1 text-right">
-                <Link onClick={handleDelete}>
-                <CiTrash size="22px" />
-                </Link>
-            </div>
-            <div className="col-span-1 text-right">
-            <Link to={'/event/edit/' + event.id }>
-            <span><CiEdit size="22px"/></span>
-            </Link>
+    <div className="my-2 mx-4">
+        <div className="grid grid-cols-8 p-2 border-2  rounded-sm">
+            <div className="col-span-2"><p>{event.event_name}</p></div>
+            <div className="col-span-2"><p>{event.event_date}</p></div>
+            <div className="col-span-4 text-right">
+                    <p className="inline-block px-4">
+                        <Link to={'/event/edit/' + event.id }>
+                            <span><CiEdit size="22px"/></span>
+                        </Link>
+                    </p>
+                    <p className="inline-block px-4">
+                    <Link onClick={handleDelete}>
+                        <CiTrash size="22px" />
+                    </Link>
+                    </p>
             </div>
         </div>
     </div>
