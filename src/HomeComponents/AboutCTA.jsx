@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AboutCTA(){
     return(<>
     <div className="grid grid-cols-6 h-[400px] bg-[url('/homeCTAbg.jpg')] bg-cover">
@@ -6,7 +8,9 @@ export default function AboutCTA(){
         <h4 className="text-[18px] font-medium tracking-[3px]">ABOUT OUR HISTORY</h4>
         </div>
         <div className="col-span-4 col-start-2 text-center font-bold">
-            <button className="hover:bg-slate-400 py-4 px-6 rounded-md bg-slate-300 text-jet border-2 border-jet shadow-md ease-in-out">ABOUT REPLAY</button>
+            <Link to="/about">
+            <button className="hover:bg-slate-400 py-4 px-6 rounded-md bg-slate-300 text-jet border-2 border-jet shadow-md ease-in-out font-bold">ABOUT REPLAY</button>
+            </Link>
         </div>
     </div>
     </>)
