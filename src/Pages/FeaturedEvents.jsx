@@ -18,6 +18,7 @@ export default function FeaturedEvents (){
  const [currentMonth, setCurrentMonth] = useState(month)
  const [currentYear, setCurrentYear] = useState(year)
 
+ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 
  useEffect(() => {
@@ -38,6 +39,7 @@ export default function FeaturedEvents (){
     }
 
     fetchEvents()
+    console.log(events)
  }, [orderBy, currentMonth, currentYear]);
 
  useEffect(() => {
@@ -51,7 +53,7 @@ export default function FeaturedEvents (){
             var eventYear = eventDate.getFullYear();
 
     
-            if (eventMonth  == currentMonth && eventYear == currentYear && eventDate >= todaysDate){
+            if (sortedArr.length < 1 && eventMonth  == currentMonth && eventYear == currentYear && eventDate >= todaysDate){
                 sortedArr.push(event)
             }
             
@@ -64,36 +66,49 @@ export default function FeaturedEvents (){
 
  return(<>
     <div>
-        <div className="grid grid-cols-12 mb-6 mt-10 mx-10">
-            <div className="col-span-6 col-start-4 text-center">
-                <h1 className="text-[36px] mb-4 font-bold uppercase">Upcoming Events</h1></div>
-        </div>
         {error && (<p>{error}</p>)}
-        {sortedEvents && (<div className="events grid grid-cols-4 gap-4 px-20 pb-10 pt-4">
+        {sortedEvents && (<div className="events grid grid-cols-12 gap-4 px-20 pb-10 pt-4 ">
             {sortedEvents.map((event) => {
                 var d = event.event_date;
                 var supabaseDate = new Date(event.event_date)
                 var eventDate = new Date( supabaseDate.getTime() + Math.abs(supabaseDate.getTimezoneOffset()*60000) )
                 var eventMonth = eventDate.getMonth() + 1;
                 var eventDay = d.slice(-2)
+                var day = eventDate.getDay()
+                var dayOfTheWeek = dayNames[day]
                 var time = event.event_start_time;
                 const convertedTime = new Date('1970-01-01T' + time +  'Z').toLocaleTimeString('en-US', {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});
 
                 
 
-                    return <div className="h-[200px] bg-[#0F1415]" key={event.id}>
-                        <div className="grid grid-cols-12">
-                        <div className="bg-[#B2FFDF] text-jet col-span-6 text-center font-bold font-[18px] mx-4 p-4">
-                            {eventMonth} / {eventDay}
-                        </div>
-                        </div>
-                        <div className="grid grid-cols-6">
-                            <div className="col-span-6 p-4">
-                               <p className="text-[16px] font-bold uppercase">{event.event_name}</p>
-                               <p className="text-[12px]">{convertedTime} / ${event.event_cost}</p>
-                            </div>
+                    return (
+                    <>
+                    <div className="mb-6 mt-10 mx-10 col-span-12 ">
+                        <div className="text-center">
+                            <h1 className="text-[28px] mb-4 font-bold capitalize">{dayOfTheWeek} - {eventMonth} / {eventDay}</h1>
                         </div>
                     </div>
+                    <div className="col-span-12 grid grid-flow-col gap-4 auto-cols-auto">
+                    {event.matinee != null &&
+                    <div>
+                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">Matinee</h2>
+                        <p className="text-center">{event.matinee}</p>
+                    </div>
+                    }
+                    {event.lateShow != null &&
+                    <div>
+                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">Late Show</h2>
+                        <p className="text-center">{event.lateShow}</p>
+                    </div>
+                    }
+                    {event.dj != null &&
+                    <div>
+                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">DJ</h2>
+                        <p className="text-center">{event.dj}</p>
+                    </div>
+                    }
+                    </div>
+                    </>)
             })}
         </div>)}
         <div className="grid grid-cols-12 px-20 pb-10">

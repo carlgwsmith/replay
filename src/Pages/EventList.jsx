@@ -72,7 +72,7 @@ const incrementMonth = ()=>{
     return(<>
     <div>
     <div className="grid grid-cols-12 px-4 py-[60px]">
-                <div className="col-span-2">
+                <div className="col-span-4">
                    <Link to="/createEvent" className="border-1 bg-slate-400 p-4 rounded-sm text-gray-900"><GrFormAdd className="inline"/>Create New Event</Link>
                 </div>
             </div>

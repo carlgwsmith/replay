@@ -9,11 +9,12 @@ export default function EditEvent(){
 
     const {id} = useParams()
     const navigate = useNavigate()
-    const [event_name, seteventName] = useState('');
+    const [matinee, setMatinee] = useState('');
+    const [dj, setDj] = useState('')
+    const [lateShow, setLateShow] = useState('')
     const [event_description, seteventDescription] = useState('');
     const [event_image, seteventImage] = useState('');
     const [event_cost, seteventCost] = useState('');
-    const [event_start_time, seteventStartTime] = useState('');
     const [event_date, seteventDate] = useState(new Date());
     const [date, setDate] = useState('')
     const [formError, setFormError] = useState('')
@@ -32,10 +33,11 @@ export default function EditEvent(){
             if(data){
                 seteventCost(data.event_cost)
                 seteventDescription(data.event_description)
-                seteventName(data.event_name)
                 seteventImage(data.event_image)
-                seteventStartTime(data.event_start_time)
                 setDate(data.event_date)
+                setMatinee(data.matinee)
+                setDj(data.dj)
+                setLateShow(data.lateShow)
 
                 console.log(typeof data.event_date)
             }
@@ -45,14 +47,14 @@ export default function EditEvent(){
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
-        if(!event_name || !event_description || !event_image || !event_cost || !event_start_time){
+        if(!matinee || !dj || !lateShow || !event_description || !event_image || !event_cost){
             setFormError('Complete all form fields')
             return
         }
         const { data, error } = await supabase
         .from('events')
         .update({
-            event_name, event_cost, event_date, event_description, event_start_time, event_image
+            dj, lateShow, matinee, event_cost, event_date, event_description, event_image
         })
         .select()
         .eq('id', id)
@@ -69,14 +71,22 @@ export default function EditEvent(){
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
-            <h2 className="font-bold text-xl">Edit {event_name} on {date}</h2>
+            <h2 className="font-bold text-xl">Edit {date}</h2>
         </div>
     </div>
     <form onSubmit={handleSubmit}>
     <div className="grid grid-cols-6 px-[40px] py-[20px] gap-4">
             <div className="col-span-4 col-start-2">
-                <label htmlFor="name" className="block">Event Name</label>
-                <input type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={event_name} onChange={(e)=> seteventName(e.target.value)} />
+                <label htmlFor="name" className="block">Matinee Event</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={matinee} onChange={(e)=> setMatinee(e.target.value)} />
+            </div>
+            <div className="col-span-4 col-start-2">
+                <label htmlFor="name" className="block">DJ</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={dj} onChange={(e)=> setDj(e.target.value)} />
+            </div>
+            <div className="col-span-4 col-start-2">
+                <label htmlFor="name" className="block">Late Event</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={lateShow} onChange={(e)=> setLateShow(e.target.value)} />
             </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="description" className="block">Event Description</label>
@@ -93,10 +103,6 @@ export default function EditEvent(){
             <div className="col-span-4 col-start-2">
                 <label htmlFor="starttime" className="block">Event Date</label>
                 <DatePicker selected={event_date} onChange={(date) => seteventDate(date)} />
-            </div>
-            <div className="col-span-4 col-start-2">
-                <label htmlFor="starttime" className="block">Event Start Time</label>
-                <input type="time" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" id="starttime" value={event_start_time}  />
             </div>
             <div className="col-span-4 col-start-2">
                 <Link to="/eventlist">
