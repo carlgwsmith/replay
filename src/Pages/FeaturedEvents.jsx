@@ -65,9 +65,9 @@ export default function FeaturedEvents (){
 
 
  return(<>
-    <div>
+    <div className="featuredEvents">
         {error && (<p>{error}</p>)}
-        {sortedEvents && (<div className="events grid grid-cols-12 gap-4 px-20 pb-10 pt-4 ">
+        {sortedEvents && (<div className="xs:px-4 md:px-20 pb-10 pt-4">
             {sortedEvents.map((event) => {
                 var d = event.event_date;
                 var supabaseDate = new Date(event.event_date)
@@ -78,41 +78,47 @@ export default function FeaturedEvents (){
                 var dayOfTheWeek = dayNames[day]
                 var time = event.event_start_time;
                 const convertedTime = new Date('1970-01-01T' + time +  'Z').toLocaleTimeString('en-US', {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});
-
                 
-
-                    return (
-                    <>
-                    <div className="mb-6 mt-10 mx-10 col-span-12 ">
-                        <div className="text-center">
-                            <h1 className="text-[28px] mb-4 font-bold capitalize">{dayOfTheWeek} - {eventMonth} / {eventDay}</h1>
+                return (
+                <div key={event.id}>
+                    <div className="grid grid-cols-6">
+                        <div className="mb-6 mt-10 sm:mx-4 md:mx-10 col-span-6">
+                            <div className="text-center">
+                                <h1 className="text-[28px] mb-4 font-bold uppercase text-[#caaff7]">{dayOfTheWeek} - {eventMonth} / {eventDay}</h1>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-span-12 grid grid-flow-col gap-4 auto-cols-auto">
+                    <div className="grid grid-flow-col auto-cols-auto xs:gap-x-2 md:gap-x-10">
                     {event.matinee != null &&
-                    <div>
-                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">Matinee</h2>
-                        <p className="text-center">{event.matinee}</p>
+                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                        <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Matinee</h2>
+                        <div className="p-4 ">
+                            <p className="text-center">{event.matinee}</p>
+                        </div>
                     </div>
                     }
                     {event.lateShow != null &&
-                    <div>
-                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">Late Show</h2>
+                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                        <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Late Show Inside</h2>
+                        <div className="p-4 ">
                         <p className="text-center">{event.lateShow}</p>
+                        </div>
                     </div>
                     }
                     {event.dj != null &&
-                    <div>
-                        <h2 className="text-center uppercase font-bold border-b-2 mb-2 pb-2 text-[18px] w-[50%] mx-auto">DJ</h2>
+                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                        <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Late Show OUTSIDE</h2>
+                        <div className="p-4">
                         <p className="text-center">{event.dj}</p>
+                        </div>
                     </div>
                     }
                     </div>
-                    </>)
+                </div>)
             })}
         </div>)}
         <div className="grid grid-cols-12 px-20 pb-10">
-            <div className="col-span-4 col-start-5">
+            <div className="xs:col-span-6 md:col-span-4 xs:col-start-4 md:col-start-5">
                 <Link to="/calendar">
                     <div className="hover:bg-slate-400 py-4 px-6 rounded-md bg-slate-300 font-bold text-jet border-2 border-jet shadow-md ease-in-out text-center uppercase">View All Events</div>
                 </Link>

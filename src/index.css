@@ -25,15 +25,21 @@ body{
 }
 a {
   font-weight: 500;
-  color: #c4a2ff;
+  color: #d7c0ff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #9460ee;
+  color: #e1d1fd;
 }
 .fade-in {
 	-webkit-animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+.featuredEvents{
+  
+  background-color: rgb(31, 41, 55);
+  background-image: radial-gradient(at 94% 92%, rgb(15, 23, 42) 0, transparent 100%), radial-gradient(at 42% 42%, rgb(23, 23, 23) 0, transparent 65%);
+
 }
 
 /**

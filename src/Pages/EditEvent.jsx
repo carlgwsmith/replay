@@ -79,9 +79,10 @@ export default function EditEvent(){
             <div className="col-span-4 col-start-2">
                 <label htmlFor="name" className="block">Matinee Event</label>
                 <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={matinee} onChange={(e)=> setMatinee(e.target.value)} />
+                <input type="checkbox" onClick={this.onClick} checked={!this.state.location}></input>
             </div>
             <div className="col-span-4 col-start-2">
-                <label htmlFor="name" className="block">DJ</label>
+                <label htmlFor="name" className="block">DJ or Late Show Outside</label>
                 <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={dj} onChange={(e)=> setDj(e.target.value)} />
             </div>
             <div className="col-span-4 col-start-2">

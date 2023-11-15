@@ -97,8 +97,8 @@ const incrementMonth = ()=>{
                         <div className="grid grid-cols-6 h-[65%]">
                             <div className="col-span-6 p-4">
                                <p className="text-[12px] font-bold uppercase text-green-200">Matinee: <span className="text-[14px] font-normal text-white normal-case">{event.matinee}</span></p>
-                               <p className="text-[12px] font-bold uppercase text-green-200">DJ: <span className="text-[14px] font-normal text-white normal-case">{event.dj}</span></p>
-                               <p className="text-[12px] font-bold uppercase text-green-200">Late: <span className="text-[14px] font-normal text-white normal-case">{event.lateShow}</span></p>
+                               <p className="text-[12px] font-bold uppercase text-green-200">LATE OUTSIDE: <span className="text-[14px] font-normal text-white normal-case">{event.dj}</span></p>
+                               <p className="text-[12px] font-bold uppercase text-green-200">Late Inside: <span className="text-[14px] font-normal text-white normal-case">{event.lateShow}</span></p>
                                <p className="text-[12px] mt-[12px]">Cost: ${event.event_cost}</p>
                             </div>
                         </div>
