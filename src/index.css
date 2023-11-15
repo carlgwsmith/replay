@@ -38,8 +38,8 @@ a:hover {
 .featuredEvents{
   
   background-color: rgb(31, 41, 55);
-  background-image: radial-gradient(at 94% 92%, rgb(15, 23, 42) 0, transparent 100%), radial-gradient(at 42% 42%, rgb(23, 23, 23) 0, transparent 65%);
-
+  border-top: 4px solid #1e283e;
+  border-bottom: 4px solid #1e283e;
 }
 
 /**

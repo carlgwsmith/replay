@@ -95,16 +95,18 @@ const incrementMonth = ()=>{
                         </div>
                         </div>
                         <div className="grid grid-cols-6 h-[65%]">
-                            <div className="col-span-6 p-4">
-                               <p className="text-[12px] font-bold uppercase text-green-200">Matinee: <span className="text-[14px] font-normal text-white normal-case">{event.matinee}</span></p>
-                               <p className="text-[12px] font-bold uppercase text-green-200">LATE OUTSIDE: <span className="text-[14px] font-normal text-white normal-case">{event.dj}</span></p>
-                               <p className="text-[12px] font-bold uppercase text-green-200">Late Inside: <span className="text-[14px] font-normal text-white normal-case">{event.lateShow}</span></p>
+                            <div className="col-span-6 p-4">{event.matinee != null &&
+                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">Matinee: <span className="text-[14px] font-normal text-white normal-case">{event.matinee}</span></p>}
+                               {event.dj != null &&
+                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">LATE OUTSIDE: <span className="text-[14px] font-normal text-white normal-case">{event.dj}</span></p>}
+                               {event.lateShow != null &&
+                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">Late Inside: <span className="text-[14px] font-normal text-white normal-case">{event.lateShow}</span></p>}
                                <p className="text-[12px] mt-[12px]">Cost: ${event.event_cost}</p>
                             </div>
                         </div>
                         <div className=" text-center">
                             <div>
-                                <a href="" className="font-[12px]">View Details</a>
+                                <a href="" className="hover:bg-neutral-900 py-2 px-4 border-2 border-slate-600 rounded-md text-slate-300 ease-in-out text-center uppercase text-[12px]">View Details</a>
                             </div>
                         </div>
                     </div>

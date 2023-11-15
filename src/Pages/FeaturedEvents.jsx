@@ -65,7 +65,7 @@ export default function FeaturedEvents (){
 
 
  return(<>
-    <div className="featuredEvents">
+    <div className="featuredEvents bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black">
         {error && (<p>{error}</p>)}
         {sortedEvents && (<div className="xs:px-4 md:px-20 pb-10 pt-4">
             {sortedEvents.map((event) => {
@@ -90,7 +90,7 @@ export default function FeaturedEvents (){
                     </div>
                     <div className="grid grid-flow-col auto-cols-auto xs:gap-x-2 md:gap-x-10">
                     {event.matinee != null &&
-                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                    <div className="md:col-auto xs:col-span-full mb-4 rounded-md p-2">
                         <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Matinee</h2>
                         <div className="p-4 ">
                             <p className="text-center">{event.matinee}</p>
@@ -98,7 +98,7 @@ export default function FeaturedEvents (){
                     </div>
                     }
                     {event.lateShow != null &&
-                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                    <div className="md:col-auto xs:col-span-full mb-4 rounded-md p-2">
                         <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Late Show Inside</h2>
                         <div className="p-4 ">
                         <p className="text-center">{event.lateShow}</p>
@@ -106,7 +106,7 @@ export default function FeaturedEvents (){
                     </div>
                     }
                     {event.dj != null &&
-                    <div className="md:col-auto xs:col-span-full mb-4 border-2 rounded-md p-2">
+                    <div className="md:col-auto xs:col-span-full mb-4 rounded-md p-2">
                         <h2 className="text-center uppercase font-bold text-[18px] w-[100%] mx-auto">Late Show OUTSIDE</h2>
                         <div className="p-4">
                         <p className="text-center">{event.dj}</p>
