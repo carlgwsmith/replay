@@ -57,7 +57,7 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                 <div className={navbarOpen ? 'fixed left-0 top-0 w-[100%] border-right border-r-gray-900 h-full bg-[#0F1415] ease-in-out duration-500 z-[99999]' : 'z-[99999] bg-light fixed left-[-100%] ease-in-out duration-500'}>
                     <div className="grid grid-cols-6">
                     <div className="col-span-3 text-xl font-bold tracking-tighter m-4 w-[75%] inline-block">
-                    <img src="logo.png" style={{'width':'200px'}}/>
+                    <img src="/logo.png" style={{'width':'200px'}}/>
                     </div>
                     <div className="col-span-3 p-4 inline-block">
                 <MdClose size={20} navbarOpen={false} onClick={handleNav} className="float-right"/>

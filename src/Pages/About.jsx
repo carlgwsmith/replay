@@ -3,6 +3,9 @@ export default function About(){
     <div className="grid grid-cols-12 p-10">
     <div className="col-span-12">
 			<h2 className="text-[42px] mb-4 font-bold">FAQ</h2>
+      <p><strong>WHERE IS THE REPLAY LOUNGE?</strong></p>
+<p className="text-[22px]">946 MASSACHUSETTS STREET | LAWRENCE, KS</p>
+<br/>
 <p><strong>WHEN IS REPLAY LOUNGE OPEN FOR BUSINESS?</strong></p>
 <p>Replay Lounge is open 5PM-2AM every day.</p>
 <br/>
