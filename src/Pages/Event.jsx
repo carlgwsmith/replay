@@ -12,8 +12,8 @@ export default function Event(){
     const [event_description, seteventDescription] = useState('');
     const [event_image, seteventImage] = useState('');
     const [event_cost, seteventCost] = useState('');
-    // const [event_date, seteventDate] = useState(new Date());
-    // const [date, setDate] = useState('')
+    const [event_date, seteventDate] = useState([]);
+    const [date, setDate] = useState('')
     const [formError, setFormError] = useState('')
 
     const d = new Date();
@@ -43,7 +43,7 @@ export default function Event(){
                 seteventCost(data.event_cost)
                 seteventDescription(data.event_description)
                 seteventImage(data.event_image)
-                // seteventDate(data.event_date)
+                seteventDate(data.event_date)
                 setMatinee(data.matinee)
                 setDj(data.dj)
                 setLateShow(data.lateShow)
@@ -60,7 +60,7 @@ export default function Event(){
     <h1>{matinee}</h1>
     <h1>{lateShow}</h1>
     <p>{event_description}</p>
-    {/* <p>{event_date}</p> */}
+    <p>{event_date}</p>
     <p>{event_cost}</p>
     </>)
 }
