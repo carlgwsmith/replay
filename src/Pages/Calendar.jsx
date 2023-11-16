@@ -1,6 +1,7 @@
 import supabase from "../Config/supabaseClient"
 import { useEffect, useState } from "react"
 import {BiLeftArrowAlt, BiRightArrowAlt} from 'react-icons/bi'
+import { Link } from "react-router-dom"
 
 
 export default function Calendar (){
@@ -106,7 +107,8 @@ const incrementMonth = ()=>{
                         </div>
                         <div className=" text-center">
                             <div>
-                                <a href="" className="hover:bg-neutral-900 py-2 px-4 border-2 border-slate-600 rounded-md text-slate-300 ease-in-out text-center uppercase text-[12px]">View Details</a>
+                                <Link to={'/event/' + event.id}>
+                                <a href="" className="hover:bg-neutral-900 py-2 px-4 border-2 border-slate-600 rounded-md text-slate-300 ease-in-out text-center uppercase text-[12px]">View Details</a></Link>
                             </div>
                         </div>
                     </div>
