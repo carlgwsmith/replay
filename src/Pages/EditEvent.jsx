@@ -18,6 +18,9 @@ export default function EditEvent(){
     const [event_date, seteventDate] = useState(new Date());
     const [date, setDate] = useState('')
     const [formError, setFormError] = useState('')
+    const [showOutside, setShowOutside] = useState(false)
+    const [showMatinee, setShowMatinee] = useState(false)
+    const [showLate, setShowLate] = useState(false)
 
     useEffect(() => {
         const fetchEvent = async ()=>{
@@ -38,16 +41,25 @@ export default function EditEvent(){
                 setMatinee(data.matinee)
                 setDj(data.dj)
                 setLateShow(data.lateShow)
-
-                console.log(typeof data.event_date)
+                if(data.matinee === null){
+                    setShowMatinee(true)
+                }
+                if(data.dj === null){
+                    setShowOutside(true)
+                }
+                if(data.lateShow === null){
+                    setShowOutside(true)
+                }
             }
         }
         fetchEvent()
+
+
     }, [id, navigate ]);
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
-        if(!matinee || !dj || !lateShow || !event_description || !event_image || !event_cost){
+        if( !event_description || !event_image || !event_cost){
             setFormError('Complete all form fields')
             return
         }
@@ -68,6 +80,19 @@ export default function EditEvent(){
             navigate('/eventList')
         }
     }
+
+    const checkShowOutsideHandler = () =>{
+        setShowOutside(!showOutside)
+        setDj(null)
+    }
+    const checkMatineeHandler = () =>{
+        setShowMatinee(!showMatinee)
+        setMatinee(null)
+    }
+    const checkLateShowHandler = () =>{
+        setShowLate(!showLate)
+        setLateShow(null)
+    }
     return(<>
     <div className="grid grid-cols-6 px-[40px] py-[20px]">
         <div className="col-span-4 col-start-2">
@@ -77,17 +102,22 @@ export default function EditEvent(){
     <form onSubmit={handleSubmit}>
     <div className="grid grid-cols-6 px-[40px] py-[20px] gap-4">
             <div className="col-span-4 col-start-2">
-                <label htmlFor="name" className="block">Matinee Event</label>
-                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={matinee} onChange={(e)=> setMatinee(e.target.value)} />
-                
+                <label htmlFor="name" className="block">Matinee Details</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={matinee} onChange={(e)=> setMatinee(e.target.value)} disabled={showMatinee}/>
+                <input type="checkbox" id="checkbox" className="mr-2" checked={showMatinee} onChange={checkMatineeHandler}/>
+                <label htmlFor="checkbox"><sup className="top-[-0.15em]">No Matinee</sup></label>
             </div>
             <div className="col-span-4 col-start-2">
-                <label htmlFor="name" className="block">DJ or Late Show Outside</label>
-                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={dj} onChange={(e)=> setDj(e.target.value)} />
+                <label htmlFor="name" className="block">DJ or Late Show Outside Details</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={dj} onChange={(e)=> setDj(e.target.value)} disabled={showOutside}/>
+                <input type="checkbox" id="checkbox1" className="mr-2" checked={showOutside} onChange={checkShowOutsideHandler}/>
+      <label htmlFor="checkbox1"><sup className="top-[-0.15em]">No Show Outside</sup></label>
             </div>
             <div className="col-span-4 col-start-2">
-                <label htmlFor="name" className="block">Late Event</label>
-                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={lateShow} onChange={(e)=> setLateShow(e.target.value)} />
+                <label htmlFor="name" className="block">Late Event Details</label>
+                <textarea type="text" id="name" className="w-[100%] p-2 h-10 rounded-sm border-1 border-gray-400" value={lateShow} onChange={(e)=> setLateShow(e.target.value)} disabled={showLate}/>
+                <input type="checkbox" id="checkbox2" className="mr-2" checked={showLate} onChange={checkLateShowHandler}/>
+      <label htmlFor="checkbox2"><sup className="top-[-0.15em]">No Late Show</sup></label>
             </div>
             <div className="col-span-4 col-start-2">
                 <label htmlFor="description" className="block">Event Description</label>

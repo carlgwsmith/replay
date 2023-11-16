@@ -12,7 +12,7 @@ export default function About(){
 <br/>
 <p><strong>HOW DO I BOOK A SHOW AT REPLAY LOUNGE?</strong></p>
 <p>ALL BOOKING is handled through email; please DO NOT call or inquire via Facebook regarding booking.<br/>
-Please send all relevant details, including online links to music and potential dates, to: REPLAYBOOKING@GMAIL.COM<br/>
+Please send all relevant details, including online links to music and potential dates, to: <a href="mailto:replaybooking@gmail.com">REPLAYBOOKING@GMAIL.COM</a><br/>
 Please refer to more information in the <a href="/contact"><strong>CONTACT</strong></a> section.</p>
 <br/>
 <p><strong>IS THE REPLAY A PINBALL BAR?</strong></p>

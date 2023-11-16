@@ -42,7 +42,7 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                     </li>
                     <li className={linkStyle}> 
                         <NavLink to={`/contact`}>
-                            Contact
+                           Booking
                         </NavLink>
                     </li>
                     {/* <li className={linkStyle}> 
@@ -74,7 +74,7 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                         <NavLink to={`/calendar`}>Calendar</NavLink>
                         </li>
                         <li className="p-4">
-                        <NavLink to={`/contact`}>Contact</NavLink>
+                        <NavLink to={`/contact`}>Booking</NavLink>
                         </li>
                         {/* <li className="p-4">
                         <NavLink to={`/home`}>Store</NavLink>
