@@ -18,7 +18,7 @@ export default function Calendar (){
  const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
-const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 
 
 const incrementMonth = ()=>{
@@ -65,16 +65,16 @@ const incrementMonth = ()=>{
     <div>
         <div className="grid grid-cols-12 my-6 xs:p-4 sm:px-10 md:px-20">
             <div className="col-span-3">
-            <button onClick={decrementMonth} className="hover:opacity-70 hover:underline sm:text-[] md:text-[18px]"><BiLeftArrowAlt size="22px" className="inline p-l-1"/>Past Month</button>
+            <button onClick={decrementMonth} className="hover:opacity-70 hover:underline"><BiLeftArrowAlt size="22px" className="inline p-l-1"/> <span className="text-[12px] iphone:text-[12px] sm:text-[12px] md:text-[18px]">Past Month</span></button>
             </div>
             <div className="col-span-6 text-center">
                 <h1 className="xs:text-[22px] sm:text-[32px] md:text-[42px] mb-4 font-bold">{monthNames[currentMonth -1]} {currentYear}</h1></div>
             <div className="col-span-3 text-right">
-            <button className="hover:opacity-70 hover:underline" onClick={incrementMonth}>Next Month <BiRightArrowAlt className="inline" size="22px"/></button>
+            <button className="hover:opacity-70 hover:underline" onClick={incrementMonth}><span className="text-[12px] iphone:text-[12px] sm:text-[12px] md:text-[18px]">Next Month</span><BiRightArrowAlt className="inline" size="22px"/></button>
             </div>
         </div>
         {error && (<p>{error}</p>)}
-        {events && (<div className="events grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xs:px-4 sm:px-10 md:px-20 gap-4 pb-20 pt-4">
+        {events && (<div className="events grid xs:grid-cols-1 sm:grid-cols-2 mdlg:grid-cols-7 md:grid-cols-4 xs:px-4 sm:px-10 md:px-20 gap-4 pb-20 pt-4">
             {events.map((event) => {
                 var d = event.event_date;
                 var supabaseDate = new Date(event.event_date)
@@ -88,21 +88,34 @@ const incrementMonth = ()=>{
                 const convertedTime = new Date('1970-01-01T' + time +  'Z').toLocaleTimeString('en-US', {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});
 
                 if (eventMonth  == currentMonth && eventYear == currentYear){
-                    return <div className="h-[280px] bg-[#0F1415]" key={event.id}>
+                    return <div className="h-[350px] bg-[#0F1415]" key={event.id}>
                         <div className="grid grid-cols-12">
-                        <div className="bg-[#B2FFDF] text-jet col-span-6 text-center font-bold font-[14px] mx-4 p-2">
-                            <p className="text-[12px] font-normal">{dayOfTheWeek}</p>
-                            <p>{eventMonth} / {eventDay}</p>
+                        <div className="bg-[#B2FFDF] text-jet xs:col-span-4 sm:col-span-6 md:col-span-6 text-center font-bold xs:mx-6 sm:mx-4 md:mx-2 p-2">
+                            <p className="xs:text-[14px] text-[12px] font-normal uppercase">{dayOfTheWeek}</p>
+                            <p className="xs:text-[14px] text-[12px] ">{eventMonth} / {eventDay}</p>
+                        </div>
+                        <div className="xs:col-span-8 sm:col-span-6 md:col-span-6 text-center xs:px-4 sm:px-4 md:px-0 flex xs:justify-end sm:justify-end md:justify-center items-center">
+                        <p className="sm:text-[14px] md:text-[12px] mt-[12px] font-extrabold">${event.event_cost}</p>
                         </div>
                         </div>
-                        <div className="grid grid-cols-6 h-[65%]">
-                            <div className="col-span-6 p-4">{event.matinee != null &&
-                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">Matinee: <span className="text-[14px] font-normal text-white normal-case">{event.matinee}</span></p>}
+                        <div className="grid grid-cols-6 h-[70%]">
+                            <div className="col-span-6 p-4 break-words">{event.matinee != null &&
+                            <>
+                             <p className="sm:text-[12px] md:text-[9px] font-extrabold sm:text-left uppercase md:text-center tracking-[.25em]">Matinee</p>
+                               <p className="sm:text-[14px] md:text-[.75em] font-medium uppercase text-[#caaff7]">{event.matinee}</p>
+                               </>
+                               }
+                               
                                {event.dj != null &&
-                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">LATE OUTSIDE: <span className="text-[14px] font-normal text-white normal-case">{event.dj}</span></p>}
+                               <>
+                               <p className="sm:text-[12px] md:text-[9px] font-extrabold uppercase sm:text-left md:text-center tracking-[.25em] mt-2">OUTSIDE LATE</p>
+                               <p className="sm:text-[14px] md:text-[.75em] font-medium uppercase text-[#caaff7]">{event.dj}</p>
+                               </>}
                                {event.lateShow != null &&
-                               <p className="text-[12px] font-bold uppercase text-[#caaff7]">Late Inside: <span className="text-[14px] font-normal text-white normal-case">{event.lateShow}</span></p>}
-                               <p className="text-[12px] mt-[12px]">Cost: ${event.event_cost}</p>
+                               <>
+                               <p className="sm:text-[12px] md:text-[9px] font-extrabold uppercase sm:text-left md:text-center tracking-[.25em] mt-2">INSIDE LATE</p>
+                               <p className="sm:text-[14px] md:text-[.75em] font-medium uppercase text-[#caaff7]">{event.lateShow}</p>
+                               </>}
                             </div>
                         </div>
                         <div className=" text-center">

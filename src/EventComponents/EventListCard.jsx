@@ -28,9 +28,9 @@ export default function EventListCard ({ event, onDelete }){
 
     return(<>
     <div className="my-2 mx-4">
-        <div className="grid grid-cols-8 p-2 border-2  rounded-sm">
-            <div className="col-span-2"><p>{event.event_name}</p></div>
-            <div className="col-span-2"><p>{event.event_date}</p></div>
+        <div className="grid grid-cols-12 p-2 border-2  rounded-sm">
+            <div className="col-span-4"><p>{event.matinee}</p></div>
+            <div className="col-span-4"><p>{event.event_date}</p></div>
             <div className="col-span-4 text-right">
                     <p className="inline-block px-4">
                         <Link to={'/event/edit/' + event.id }>

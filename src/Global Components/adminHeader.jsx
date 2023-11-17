@@ -15,7 +15,12 @@ const linkStyle= 'm-4 text-[14px] hover:text-shadow-pop-bl hover:border-snow tex
                 <ul className=" md:flex text-[16px] ease-in-out duration-500">
                     <li className={linkStyle}> 
                         <NavLink to={`/eventlist`}>
-                            Admin Dashboard
+                           Events Dashboard
+                        </NavLink>
+                    </li>
+                    <li className={linkStyle}> 
+                        <NavLink to={`/specialslist`}>
+                            Specials Dashboard
                         </NavLink>
                     </li>
                     <li className={linkStyle}>

@@ -15,6 +15,8 @@ import EventList from './Pages/EventList';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
+import SpecialsList from './Pages/SpecialsList';
+import EditSpecial from './Specials/EditSpecial';
 const routes = [
   {path:'/*',
 element:<Home/>},
@@ -65,7 +67,15 @@ element:<Home/>},
       {
         path:'/login',
         element: <Login/>
-      }
+      },
+      {
+        path:'/specialslist',
+        element: <SpecialsList/>
+      },
+      {
+        path:'/special/edit/:id',
+        element: <EditSpecial/>
+      },
     ]
   },
 ]
